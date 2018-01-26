@@ -1,0 +1,33 @@
+<?php
+
+use Royalcms\Component\Database\Schema\Blueprint;
+use Royalcms\Component\Database\Migrations\Migration;
+
+class CreateSessionTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		RC_Schema::create('sessions', function(Blueprint $table)
+		{
+			$table->string('id', 190)->unique();
+			$table->text('payload');
+			$table->integer('last_activity');
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		RC_Schema::drop('sessions');
+	}
+
+}
